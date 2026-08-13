@@ -12,7 +12,7 @@ ShiftCash es una aplicación web moderna diseñada para el control de finanzas p
 Sigue estos pasos para ejecutar el proyecto en tu máquina:
 
 ### 1. Clonar el repositorio
-git clone https://github.com/piri277/ShiftCash
+git clone https://github.com/Amaya0910/Algo
 
 
 ### 2. Instalar dependencias
@@ -34,5 +34,3 @@ Actualmente, el backend de autenticación está en desarrollo. Para explorar la 
 Registro: El módulo de creación de cuentas nuevas aún no está operativo.
 
 Login: Ingresa cualquier usuario y contraseña. El sistema te otorgará acceso automáticamente mediante credenciales predeterminadas de prueba.
-
-
