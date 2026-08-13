@@ -1,0 +1,212 @@
+/* DetalleTransaccion.jsx - Componente modal para mostrar los detalles de una transacción específica, con opciones para editar la transacción. Maneja estados de edición, carga y error, y utiliza hooks personalizados para gestionar el formulario de transacción. */
+import { useState, useEffect } from "react";
+import { useCategorias }       from "../../../hooks/useCategorias";
+import { useTransaccionForm }  from "../../../hooks/useTransaccionForm";
+import { formatearPesos }      from "../../../utils/formatters";
+import { createPortal } from "react-dom"; 
+
+import "../../../styles/modal.css";
+
+export default function DetalleTransaccion({ transaccion, onClose, onSuccess}) {
+  const [editando, setEditando] = useState(false);
+  const { categorias, loadingCats } = useCategorias();
+  const { form, error, loading, handleChange, handleSubmit } = useTransaccionForm(
+    () => { onSuccess(); onClose(); },
+    transaccion
+  );
+
+  const esGasto = transaccion.type === "expense";
+
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [onClose]);
+
+  const formatDisplay = (val) => {
+    if (!val) return "";
+    return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
+
+  const handleAmountChange = (e) => {
+    const rawValue = e.target.value.replace(/\D/g, "");
+    handleChange({ target: { name: 'amount', value: rawValue } });
+  };
+
+  console.log(transaccion);
+  return createPortal(
+    <div className="modal-overlay-scroll" onClick={onClose} style={{ top: scrollY }}>
+      <div className="modal-card" onClick={e => e.stopPropagation()}>
+
+        {/* Header */}
+        <div className="modal-header">
+          <h3>{editando ? "Editar transacción" : "Detalle"}</h3>
+          <button className="modal-close" onClick={onClose}>✕</button>
+        </div>
+
+        {/* Modo lectura */}
+        {!editando && (
+          <div className="detalle-body">
+            <div className="detalle-monto" style={{ color: esGasto ? "#f87171" : "#34d399" }}>
+              {esGasto ? "−" : "+"}{formatearPesos(transaccion.amount)}
+            </div>
+            <div className="detalle-grid">
+              <div className="detalle-campo">
+                <span className="detalle-label">Categoría</span>
+                <span className="detalle-valor">{transaccion.category_name}</span>
+              </div>
+              <div className="detalle-campo">
+                <span className="detalle-label">Tipo</span>
+                <span className="detalle-valor">{esGasto ? "💸 Gasto" : "💰 Ingreso"}</span>
+              </div>
+              <div className="detalle-campo">
+                <span className="detalle-label">Fecha</span>
+                <span className="detalle-valor">
+                  {new Date(transaccion.trans_date).toLocaleDateString("es-CO", {
+                    weekday: "long", year: "numeric", month: "long", day: "numeric"
+                  })}
+                </span>
+              </div>
+              <div className="detalle-campo">
+                <span className="detalle-label">Descripción</span>
+                <span className="detalle-valor">{transaccion.description || "Sin descripción"}</span>
+              </div>
+
+              <div className="detalle-campo">
+                <span className="detalle-label">Recurrente</span>
+                <span className="detalle-valor">
+                  {transaccion.is_recurring ? "🔁 Sí" : "No"}
+                </span>
+              </div>
+
+              {transaccion.is_recurring && (
+                <div className="detalle-campo">
+                  <span className="detalle-label">Frecuencia</span>
+                  <span className="detalle-valor">
+                    {{
+                      monthly: "📅 Mensual",
+                      weekly: "📅 Semanal",
+                      biweekly: "📅 Quincenal",
+                      annual: "📅 Anual",
+                    }[transaccion.frequency] ?? transaccion.frequency}
+                  </span>
+                </div>
+              )}
+            </div>
+            <button className="modal-submit" onClick={() => setEditando(true)}>
+              ✏️ Editar
+            </button>
+          </div>
+        )}
+
+        {/* Modo edición */}
+        {editando && (
+          <form onSubmit={handleSubmit}>
+            {error && <div className="modal-error">{error}</div>}
+
+            <div className="modal-field">
+              <label>Tipo</label>
+              <div className="modal-type-toggle">
+                <button type="button"
+                  className={`toggle-btn ${form.type === 'expense' ? 'active-expense' : ''}`}
+                  onClick={() => handleChange({ target: { name: 'type', value: 'expense' } })}
+                >💸 Gasto</button>
+                <button type="button"
+                  className={`toggle-btn ${form.type === 'income' ? 'active-income' : ''}`}
+                  onClick={() => handleChange({ target: { name: 'type', value: 'income' } })}
+                >💰 Ingreso</button>
+              </div>
+            </div>
+
+            <div className="modal-field">
+              <label>Monto *</label>
+              <input 
+                name="amount" 
+                type="text" 
+                inputMode="numeric"
+                value={formatDisplay(form.amount)} 
+                onChange={handleAmountChange} required />
+            </div>
+
+            <div className="modal-field">
+              <label>Categoría *</label>
+              <select name="category_id" value={form.category_id} onChange={handleChange} required>
+                <option value="">Selecciona una categoría</option>
+                {loadingCats ? (
+                  <option disabled>Cargando...</option>
+                ) : (
+                  categorias
+                    .filter(c => c.type === form.type || c.type === 'both')
+                    .map(cat => (
+                      <option key={cat.category_id} value={cat.category_id}>
+                        {cat.name_cat}
+                      </option>
+                    ))
+                )}
+              </select>
+            </div>
+
+            <div className="modal-field">
+              <label>Descripción (opcional)</label>
+              <input name="description" type="text"
+                value={form.description} onChange={handleChange} />
+            </div>
+
+            <div className="modal-field">
+              <label>Fecha (opcional)</label>
+              <input name="trans_date" type="date"
+                value={form.trans_date} onChange={handleChange} />
+            </div>
+
+            {/* Recurrente */}
+            <div
+              className={`modal-recurrente-toggle ${form.is_recurring ? 'activo' : ''}`}
+              onClick={() =>
+                handleChange({ target: { name: 'is_recurring', type: 'checkbox', checked: !form.is_recurring } })
+              }
+            >
+              <div className="modal-recurrente-label">
+                <span>🔁</span>
+                Repetir automáticamente
+              </div>
+              <div className="modal-switch" />
+            </div>
+
+            {form.is_recurring && (
+             <div className="modal-field">
+                <label>Frecuencia *</label>
+                <select
+                  name="frequency"
+                 value={form.frequency}
+                  onChange={handleChange}
+                  required
+               >
+                  <option value="">Selecciona una frecuencia</option>
+                  <option value="monthly">Mensual</option>
+                  <option value="weekly">Semanal</option>
+                  <option value="biweekly">Quincenal</option>
+                 <option value="annual">Anual</option>
+               </select>
+              </div>
+            )}
+
+            <div style={{ display: "flex", gap: 10 }}>
+              <button type="button" className="modal-submit"
+                style={{ background: "#2e303a", boxShadow: "none" }}
+                onClick={() => setEditando(false)}
+              >
+                Cancelar
+              </button>
+              <button type="submit" className="modal-submit" disabled={loading}>
+                {loading ? "Guardando..." : "Guardar"}
+              </button>
+            </div>
+          </form>
+        )}
+      </div>
+    </div>,
+    document.body
+  );
+}

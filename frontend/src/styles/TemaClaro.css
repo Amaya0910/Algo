@@ -1,0 +1,677 @@
+[data-theme="light"] {
+  --primary:          #7B5C42;
+  --primary-dark:     #5C3D2E;
+  --accent:           #9C6B4E;
+  --success:          #059669;
+  --danger:           #c0392b;
+  --warning:          #b7791f;
+
+  --dark:             #EBDACA;
+  --surface:          #F5EDE3;
+  --surface-2:        #EDE0D2;
+  --surface-3:        #E0CEBF;
+
+  --border:           rgba(123, 92, 66, 0.15);
+  --border-hover:     rgba(123, 92, 66, 0.35);
+
+  --text-primary:     #2C1A0E;
+  --text-muted:       #6B4F3A;
+  --text-faint:       #A0826D;
+
+  --glow-primary:     rgba(123, 92, 66, 0.10);
+  --glow-accent:      rgba(156, 107, 78, 0.08);
+
+  --gradient-accent:  linear-gradient(135deg, #7B5C42 0%, #9C6B4E 100%);
+  --gradient-success: linear-gradient(135deg, #16a96e 0%, #0d7a50 100%);
+  --gradient-danger:  linear-gradient(135deg, #e05555 0%, #c73c3c 100%);
+
+  --shadow-card:      0 2px 16px rgba(123, 92, 66, 0.08), 0 1px 0 rgba(255,255,255,0.6) inset;
+  --shadow-glow:      0 0 40px rgba(123, 92, 66, 0.10);
+}
+
+/* Aplicación global de fondo y texto principal */
+[data-theme="light"] .db-app {
+  background-color: var(--dark);
+  color: var(--text-primary);
+  background-image: none;
+}
+
+/* Tarjetas, Modales y Paneles */
+[data-theme="light"] .db-card,
+[data-theme="light"] .modal-card,
+[data-theme="light"] .db-sidebar,
+[data-theme="light"] .db-profile-dropdown,
+[data-theme="light"] .presupuestos-card,
+[data-theme="light"] .presupuestos-summary,
+[data-theme="light"] .auth-form-box,
+[data-theme="light"] .form-box,
+[data-theme="light"] .meta-card,
+[data-theme="light"] .plantilla-container,
+[data-theme="light"] .plantilla-header,
+[data-theme="light"] .cat-card,
+[data-theme="light"] .hist-panel,
+[data-theme="light"] .config-layout,
+[data-theme="light"] .detalle-body,
+[data-theme="light"] .custom-select-dropdown,
+[data-theme="light"] .presupuestos-modal,
+[data-theme="light"] .presupuestos-empty {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+/* Títulos y etiquetas */
+[data-theme="light"] .db-view-title,
+[data-theme="light"] .db-card-title,
+[data-theme="light"] .modal-header h3,
+[data-theme="light"] .presupuestos-modal-title,
+[data-theme="light"] .form-box h1,
+[data-theme="light"] .cat-card-name,
+[data-theme="light"] .detalle-valor,
+[data-theme="light"] .config-titulo,
+[data-theme="light"] .logo-text,
+[data-theme="light"] .profile-name,
+[data-theme="light"] .meta-card-content h3,
+[data-theme="light"] .info-value,
+[data-theme="light"] .day-number,
+[data-theme="light"] .plantilla-header h2,
+[data-theme="light"] .user-name {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .db-stat-label,
+[data-theme="light"] .modal-field label,
+[data-theme="light"] .presupuestos-form-label,
+[data-theme="light"] .form-box p,
+[data-theme="light"] .forgot-link a,
+[data-theme="light"] .detalle-label,
+[data-theme="light"] .config-subtitulo,
+[data-theme="light"] .cat-card-type,
+[data-theme="light"] .user-email {
+  color: var(--text-muted) !important;
+}
+
+/* Topbar y Navbar en tema claro: fondo translúcido cálido */
+[data-theme="light"] .db-topbar {
+  background: rgba(245, 237, 227, 0.85);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .navbar {
+  background: var(--surface) !important;
+  border-bottom: 1px solid var(--border);
+}
+
+[data-theme="light"] .text-cash {
+  background: var(--gradient-accent) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Vista Historial: Corregir textos invisibles */
+[data-theme="light"] .hist-categoria,
+[data-theme="light"] .hist-grupo-total {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .hist-descripcion,
+[data-theme="light"] .hist-fecha,
+[data-theme="light"] .hist-grupo-fecha {
+  color: var(--text-muted) !important;
+}
+
+/* Vista Presupuestos: Resumen General y Cards */
+[data-theme="light"] .presupuestos-summary-title,
+[data-theme="light"] .presupuestos-stat-value,
+[data-theme="light"] .presupuestos-card-name,
+[data-theme="light"] .presupuestos-card-stat-value,
+[data-theme="light"] .presupuestos-progress-label span {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .presupuestos-stat-label,
+[data-theme="light"] .presupuestos-card-category,
+[data-theme="light"] .presupuestos-card-stat-label,
+[data-theme="light"] .presupuestos-progress-label,
+[data-theme="light"] .presupuestos-empty-text,
+[data-theme="light"] .presupuestos-empty-title {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="light"] .presupuestos-stat {
+  background: var(--surface-2) !important;
+}
+
+/* App shell: sin texture oscura */
+[data-theme="light"] .db-app {
+  background-image: none;
+}
+
+/* Nav item activo */
+[data-theme="light"] .db-nav-item.active::before {
+  box-shadow: 0 0 8px rgba(123, 92, 66, 0.35);
+}
+
+[data-theme="light"] .db-nav-item {
+  color: var(--text-muted);
+}
+
+[data-theme="light"] .db-nav-item:hover {
+  background: var(--surface-2);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .db-nav-item.active {
+  background: rgba(123, 92, 66, 0.10);
+  color: var(--primary);
+}
+
+/* Hero Section y Auth Container */
+[data-theme="light"] .hero-section,
+[data-theme="light"] .auth-container {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(123, 92, 66, 0.45) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 70% 60%, rgba(123, 92, 66, 0.35) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 40% 80%, rgba(123, 92, 66, 0.5) 1.5px, transparent 1.5px),
+    linear-gradient(135deg, #EBDACA 0%, #EDE0D2 40%, #E0CEBF 100%) !important;
+  background-size: 150px 150px, 200px 200px, 250px 250px, 100% 100% !important;
+  background-repeat: repeat, repeat, repeat, no-repeat !important;
+}
+
+[data-theme="light"] .hero-section::before {
+  background: radial-gradient(circle, rgba(123, 92, 66, 0.12) 0%, transparent 70%) !important;
+}
+
+[data-theme="light"] .hero-section::after {
+  background: radial-gradient(circle, rgba(156, 107, 78, 0.10) 0%, transparent 70%) !important;
+}
+
+/* Sombras y luces en Home Page (Modo Claro) */
+[data-theme="light"] .btn-navbar-enter,
+[data-theme="light"] .btn-hero-enter,
+[data-theme="light"] .contact-section .btn-submit {
+  box-shadow: 0 8px 24px rgba(123, 92, 66, 0.25) !important;
+}
+
+[data-theme="light"] .btn-navbar-enter:hover,
+[data-theme="light"] .btn-hero-enter:hover,
+[data-theme="light"] .contact-section .btn-submit:hover {
+  box-shadow: 0 12px 32px rgba(123, 92, 66, 0.4) !important;
+}
+
+[data-theme="light"] .social-badge {
+  box-shadow: 5px 0 20px rgba(123, 92, 66, 0.15) !important;
+}
+
+[data-theme="light"] #logo {
+  filter: drop-shadow(0 0 60px rgba(123, 92, 66, 0.25)) !important;
+}
+
+[data-theme="light"] .card-hover:hover {
+  box-shadow: 0 20px 50px rgba(123, 92, 66, 0.15) !important;
+  border-color: var(--border-hover) !important;
+}
+
+[data-theme="light"] .icon-box {
+  background: rgba(123, 92, 66, 0.1) !important;
+}
+
+[data-theme="light"] .card-hover:hover .icon-box {
+  background: rgba(123, 92, 66, 0.2) !important;
+}
+
+[data-theme="light"] #grafica {
+  border-color: var(--border) !important;
+  box-shadow: 0 20px 60px rgba(123, 92, 66, 0.1) !important;
+}
+
+[data-theme="light"] .nav-link:hover {
+  background: var(--glow-primary) !important;
+}
+
+[data-theme="light"] .hero-section p {
+  color: var(--text-muted);
+}
+
+[data-theme="light"] .services-section {
+  background: var(--dark) !important;
+}
+
+/* Metas en Modo Claro */
+[data-theme="light"] .modal-btn-cancel,
+[data-theme="light"] .btn-cancelar-plantilla {
+  background: var(--surface-2) !important;
+  color: var(--text-muted) !important;
+  border: 1px solid var(--border) !important;
+}
+
+[data-theme="light"] .plantilla-day {
+  background: var(--surface-2) !important;
+  border-color: var(--border) !important;
+}
+
+[data-theme="light"] .plantilla-info {
+  background: var(--surface-2) !important;
+  border-left-color: var(--primary) !important;
+}
+
+[data-theme="light"] .plantilla-container::-webkit-scrollbar-thumb {
+  background: rgba(123, 92, 66, 0.18);
+}
+
+[data-theme="light"] .db-compact-profile {
+  background: var(--surface-2);
+  border-color: var(--border);
+}
+
+[data-theme="light"] .dropdown-user-info {
+  border-bottom-color: var(--border);
+}
+
+[data-theme="light"] .dropdown-item {
+  color: var(--text-muted);
+}
+
+[data-theme="light"] .dropdown-item:hover {
+  background: var(--surface-2);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .btn-sidebar-toggle {
+  color: var(--text-muted);
+}
+
+/* Scrollbar */
+[data-theme="light"] .db-content::-webkit-scrollbar-thumb {
+  background: rgba(123, 92, 66, 0.18);
+}
+[data-theme="light"] .db-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(123, 92, 66, 0.35);
+}
+
+/* Inputs y selectores */
+[data-theme="light"] .modal-field input,
+[data-theme="light"] .modal-field select,
+[data-theme="light"] .presupuestos-form-input,
+[data-theme="light"] .presupuestos-form-select,
+[data-theme="light"] .input-box input,
+[data-theme="light"] .custom-select-trigger,
+[data-theme="light"] .hist-search,
+[data-theme="light"] .config-input,
+[data-theme="light"] .hist-fecha-input {
+  background: var(--surface-2) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+}
+
+[data-theme="light"] .input-box input::placeholder {
+  color: var(--text-faint) !important;
+}
+
+[data-theme="light"] .presupuestos-form-select option {
+  background: var(--surface) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Dropdowns personalizados */
+[data-theme="light"] .custom-select-option {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .custom-select-option:hover {
+  background: var(--surface-2) !important;
+}
+
+[data-theme="light"] .custom-select-option.selected {
+  background: rgba(123, 92, 66, 0.10) !important;
+  color: var(--primary) !important;
+}
+
+/* Switches */
+[data-theme="light"] .modal-recurrente-toggle {
+  background: var(--surface-2) !important;
+  border-color: var(--border) !important;
+}
+
+[data-theme="light"] .modal-recurrente-label {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="light"] .modal-recurrente-toggle.activo {
+  background: rgba(123, 92, 66, 0.08) !important;
+  border-color: var(--primary) !important;
+}
+
+[data-theme="light"] .modal-recurrente-toggle.activo .modal-recurrente-label {
+  color: var(--primary) !important;
+}
+
+[data-theme="light"] .modal-switch {
+  background: rgba(123, 92, 66, 0.15) !important;
+}
+
+[data-theme="light"] .modal-switch::after {
+  background: #fff !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+[data-theme="light"] .modal-recurrente-toggle.activo .modal-switch {
+  background: var(--primary) !important;
+}
+
+/* Emojis de categoría */
+[data-theme="light"] .cat-emoji-btn {
+  background: var(--surface-2) !important;
+  color: var(--text-primary) !important;
+  border-color: transparent !important;
+}
+
+[data-theme="light"] .cat-emoji-btn:hover {
+  background: var(--surface-3) !important;
+}
+
+[data-theme="light"] .cat-emoji-btn.selected {
+  border-color: var(--primary) !important;
+  background: rgba(123, 92, 66, 0.10) !important;
+}
+
+/* Filtros */
+[data-theme="light"] .hist-filtrar-btn,
+[data-theme="light"] .hist-chip {
+  background: var(--surface-2) !important;
+  border-color: var(--border) !important;
+  color: var(--text-muted) !important;
+}
+
+[data-theme="light"] .hist-chip.activo,
+[data-theme="light"] .hist-filtrar-btn.activo {
+  background: rgba(123, 92, 66, 0.10) !important;
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+}
+
+[data-theme="light"] .hist-search::placeholder {
+  color: var(--text-faint) !important;
+}
+
+/* Caja info Presupuesto Permanente */
+[data-theme="light"] .presupuestos-form-field[style*="background-color: rgb(33, 37, 58)"],
+[data-theme="light"] .presupuestos-form-field[style*="background-color: #21253a"] {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-muted) !important;
+}
+
+/* Botones y Sombras (Efecto de luz café) */
+[data-theme="light"] .btn-primary,
+[data-theme="light"] .btn-nueva-meta,
+[data-theme="light"] .btn-crear-primera-meta,
+[data-theme="light"] .presupuestos-btn-add,
+[data-theme="light"] .cat-btn-nueva,
+[data-theme="light"] .modal-submit,
+[data-theme="light"] .presupuestos-modal-btn-submit,
+[data-theme="light"] .btn-guardar-plantilla,
+[data-theme="light"] .modal-btn-submit {
+  background: var(--gradient-accent) !important;
+  color: #fff !important;
+  box-shadow: 0 6px 20px rgba(123, 92, 66, 0.25) !important;
+}
+
+[data-theme="light"] .btn-primary:hover,
+[data-theme="light"] .btn-nueva-meta:hover,
+[data-theme="light"] .presupuestos-btn-add:hover,
+[data-theme="light"] .cat-btn-nueva:hover,
+[data-theme="light"] .modal-submit:hover,
+[data-theme="light"] .presupuestos-modal-btn-submit:hover,
+[data-theme="light"] .btn-guardar-plantilla:hover,
+[data-theme="light"] .modal-btn-submit:hover {
+  box-shadow: 0 10px 28px rgba(123, 92, 66, 0.4) !important;
+}
+
+/* Metas: Seguimiento y Resumen */
+[data-theme="light"] .dias-completados {
+  color: var(--primary) !important;
+}
+
+/* Permitimos que el color dinámico de las metas se aplique correctamente */
+[data-theme="light"] .porcentaje,
+[data-theme="light"] .progress-percentage {
+  font-weight: 700 !important;
+}
+
+[data-theme="light"] .meta-amount {
+  background: var(--surface-2) !important;
+}
+
+[data-theme="light"] .meta-amount .label,
+[data-theme="light"] .info-label,
+[data-theme="light"] .day-amount {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="light"] .config-nav {
+  background: var(--surface-2) !important;
+}
+
+[data-theme="light"] .config-card {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+[data-theme="light"] .presupuestos-modal-btn-cancel {
+  background: var(--surface-2) !important;
+  color: var(--text-muted) !important;
+  border: 1px solid var(--border) !important;
+}
+
+[data-theme="light"] .modal-submit {
+  box-shadow: 0 4px 12px rgba(123, 92, 66, 0.20);
+}
+
+/* Enfoque y Selección (Inputs y Chips) */
+[data-theme="light"] .modal-field input:focus,
+[data-theme="light"] .modal-field select:focus,
+[data-theme="light"] .presupuestos-form-input:focus,
+[data-theme="light"] .presupuestos-form-select:focus,
+[data-theme="light"] .input-box input:focus,
+[data-theme="light"] .config-input:focus,
+[data-theme="light"] .hist-search:focus,
+[data-theme="light"] .hist-fecha-input:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(123, 92, 66, 0.15) !important;
+}
+
+[data-theme="light"] .presupuestos-periodo-chip.active,
+[data-theme="light"] .hist-chip.activo,
+[data-theme="light"] .hist-filtrar-btn.activo {
+  background: rgba(123, 92, 66, 0.10) !important;
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+  font-weight: 600 !important;
+}
+
+/* Vista Resumen: Corrección de textos de Meta y botones de Gráficas */
+
+/* Texto de estado de la meta (que estaba en #f0f2ff) */
+[data-theme="light"] .db-card span[style*="color: #f0f2ff"],
+[data-theme="light"] .db-card span[style*="color: rgb(240, 242, 255)"] {
+  color: var(--text-primary) !important;
+}
+
+/* Porcentaje de la meta (que estaba en #9b59f5) */
+[data-theme="light"] .db-card span[style*="color: #9b59f5"],
+[data-theme="light"] .db-card span[style*="color: rgb(155, 89, 245)"] {
+  color: var(--primary) !important;
+}
+
+/* Botones de periodo en Resumen y Botón Cambiar Meta */
+[data-theme="light"] .db-card button[style*="border-color: #5b6ef5"],
+[data-theme="light"] .db-card button[style*="border-color: rgb(91, 110, 245)"],
+[data-theme="light"] .db-card button[style*="color: #a0aaff"],
+[data-theme="light"] .db-card button[style*="color: rgb(160, 170, 255)"] {
+  border-color: var(--primary) !important;
+  background: rgba(123, 92, 66, 0.12) !important;
+  color: var(--primary) !important;
+}
+
+[data-theme="light"] .db-meta-selector {
+  background: var(--surface-2) !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .db-card button[style*="color: #555e82"],
+[data-theme="light"] .db-card button[style*="color: rgb(85, 94, 130)"] {
+  color: var(--text-muted) !important;
+  border-color: var(--border) !important;
+}
+
+/* Flechas de navegación y puntos indicadores en gráficas */
+[data-theme="light"] .db-card button[style*="background: rgba(91, 110, 245, 0.07)"] {
+  background: var(--surface-2) !important;
+  border-color: var(--border) !important;
+  color: var(--text-muted) !important;
+}
+
+[data-theme="light"] .db-card div[style*="background: #5b6ef5"],
+[data-theme="light"] .db-card div[style*="background: rgb(91, 110, 245)"] {
+  background: var(--primary) !important;
+}
+
+[data-theme="light"] .recharts-legend-item-text {
+  color: var(--text-muted) !important;
+}
+
+/* Alertas en modo claro - Ajuste de contraste para fondo crema */
+[data-theme="light"] .db-alert.warning {
+  background: rgba(183, 121, 31, 0.12) !important;
+  border-color: rgba(183, 121, 31, 0.3) !important;
+  color: #8a5d15 !important; /* Un tono café dorado para que se lea sobre el crema */
+}
+
+[data-theme="light"] .db-alert.danger {
+  background: rgba(192, 57, 43, 0.1) !important;
+  border-color: rgba(192, 57, 43, 0.25) !important;
+  color: #c0392b !important;
+}
+
+/* Bottom Navigation Bar en Modo Claro */
+[data-theme="light"] .db-bottom-nav {
+  background: var(--surface) !important;
+  border-top: 1px solid var(--border) !important;
+  box-shadow: 0 -4px 16px rgba(123, 92, 66, 0.08) !important;
+}
+
+[data-theme="light"] .bottom-nav-item {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="light"] .bottom-nav-item.active {
+  color: var(--primary) !important;
+  background: rgba(123, 92, 66, 0.08) !important;
+}
+
+[data-theme="light"] .bottom-nav-item.active::after {
+  background: var(--primary) !important;
+}
+
+/* Config Nav Logout Button en Modo Claro */
+[data-theme="light"] .config-nav-item-logout {
+  color: var(--danger) !important;
+  background: rgba(248,113,113,0.1) !important;
+  border-color: rgba(248,113,113,0.3) !important;
+}
+
+[data-theme="light"] .config-nav-item-logout:hover {
+  background: rgba(248,113,113,0.2) !important;
+  border-color: var(--danger) !important;
+}
+
+/* Auth Page: Ajustes para el tema tierra */
+[data-theme="light"] .auth-form-box .btn {
+  background: var(--gradient-accent) !important;
+  box-shadow: 0 6px 20px rgba(123, 92, 66, 0.25) !important;
+}
+
+[data-theme="light"] .toggle-box::before {
+  background: var(--gradient-accent) !important;
+}
+
+[data-theme="light"] .toggle-panel .btn {
+  border-color: #fff !important;
+  color: #fff !important;
+}
+
+[data-theme="light"] .input-box i {
+  color: var(--primary) !important;
+}
+
+[data-theme="light"] .forgot-link a:hover {
+  color: var(--primary) !important;
+}
+
+[data-theme="light"] .social-icons a {
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .social-icons a:hover {
+  background: var(--glow-primary) !important;
+  border-color: var(--primary) !important;
+}
+
+/* Theme Toggle Home en Modo Claro */
+[data-theme="light"] .theme-toggle-home button {
+  background: rgba(123, 92, 66, 0.15) !important;
+  border-color: var(--border) !important;
+}
+
+[data-theme="light"] .theme-toggle-home .toggle-circle {
+  background: var(--primary) !important;
+  color: #fff !important;
+}
+
+
+/* ── Foto de perfil: avatar en config y sidebar (Modo Claro) ── */
+[data-theme="light"] .config-avatar {
+  background: var(--accent) !important;
+}
+
+[data-theme="light"] .config-avatar-wrapper {
+  background: var(--surface-2) !important;
+  border-color: var(--border) !important;
+}
+
+[data-theme="light"] .config-btn-icon {
+  color: var(--text-muted) !important;
+  border-color: var(--border) !important;
+}
+
+[data-theme="light"] .config-btn-icon:hover:not(:disabled) {
+  background: var(--surface-3) !important;
+  border-color: var(--primary) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .config-btn-icon.danger {
+  color: var(--danger) !important;
+  border-color: rgba(192, 57, 43, 0.25) !important;
+}
+
+[data-theme="light"] .config-btn-icon.danger:hover:not(:disabled) {
+  background: rgba(192, 57, 43, 0.08) !important;
+  border-color: var(--danger) !important;
+}
+
+[data-theme="light"] .bottom-nav-avatar {
+  background: var(--accent) !important;
+}
+
+[data-theme="light"] .bottom-nav-avatar.active {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px var(--dark) !important;
+}

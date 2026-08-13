@@ -1,0 +1,397 @@
+/* historial.css - Estilos específicos para la vista de historial de transacciones, incluyendo el diseño de cada fila de transacción, estilos para los íconos, información y botones de eliminación. */
+/* ===== HISTORIAL ===== */
+.hist-fila { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(91,110,245,0.08); }
+.hist-fila:last-child { border-bottom: none; }
+
+.hist-icono { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+
+.hist-info { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+
+.hist-categoria  { font-size: 0.9rem; font-weight: 600; color: #f0f2ff; }
+.hist-descripcion { font-size: 0.78rem; color: #9ba3c7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hist-fecha      { font-size: 0.78rem; color: #9ba3c7; flex-shrink: 0; }
+.hist-monto      { font-size: 0.95rem; font-weight: 700; flex-shrink: 0; font-family: 'Sora', sans-serif; }
+
+.hist-btn-eliminar { background: none; border: none; cursor: pointer; font-size: 1rem; padding: 6px 8px; border-radius: 8px; opacity: 0.4; transition: opacity 0.2s, background 0.2s; flex-shrink: 0; }
+.hist-btn-eliminar:hover { opacity: 1; background: rgba(248,113,113,0.12); }
+
+/* ===== GRUPOS POR DÍA ===== */
+.hist-grupo {
+  margin-bottom: 20px;
+}
+
+.hist-grupo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2px 8px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid rgba(91,110,245,0.1);
+}
+
+.hist-grupo-fecha {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #9ba3c7;
+  text-transform: capitalize;
+  letter-spacing: 0.03em;
+}
+
+.hist-grupo-total {
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-family: 'Sora', sans-serif;
+}
+
+/* Badge recurrente inline */
+.hist-recurrente-badge {
+  margin-left: 6px;
+  font-size: 0.72rem;
+  opacity: 0.7;
+}
+
+/* ===== TOPBAR ===== */
+.hist-topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+/* ===== BUSCADOR ===== */
+.hist-search-wrap {
+  flex: 1;
+  min-width: 180px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.hist-search-icon {
+  position: absolute;
+  left: 12px;
+  font-size: 0.85rem;
+  pointer-events: none;
+}
+
+.hist-search {
+  width: 100%;
+  background: #111422;
+  border: 1.5px solid rgba(91,110,245,0.2);
+  border-radius: 10px;
+  color: #f0f2ff;
+  padding: 9px 36px 9px 34px;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.hist-search::placeholder { color: #9ba3c7; }
+.hist-search:focus { border-color: #5b6ef5; }
+
+.hist-search-clear {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #9ba3c7;
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 2px 4px;
+  border-radius: 4px;
+  line-height: 1;
+}
+.hist-search-clear:hover { color: #f0f2ff; }
+
+/* ===== BOTÓN FILTRAR ===== */
+.hist-filtrar-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #111422;
+  border: 1.5px solid rgba(38, 45, 98, 0.2);
+  border-radius: 10px;
+  color: #9ba3c7;
+  padding: 9px 14px;
+  font-size: 0.88rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  position: relative;
+}
+.hist-filtrar-btn:hover { border-color: rgba(91,110,245,0.45); color: #f0f2ff; }
+.hist-filtrar-btn.activo { border-color: #5b6ef5; color: #7c8df7; background: rgba(91,110,245,0.08); }
+.hist-filtrar-btn.con-filtros { border-color: #5b6ef5; }
+
+.hist-filtrar-dot {
+  width: 6px;
+  height: 6px;
+  background: #5b6ef5;
+  border-radius: 50%;
+  position: absolute;
+  top: 7px;
+  right: 7px;
+}
+
+/* ===== PANEL DE FILTROS ===== */
+.hist-panel {
+  background: #111422;
+  border: 1.5px solid rgba(91,110,245,0.2);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: slideUp 0.15s ease;
+}
+
+.hist-panel-seccion {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hist-panel-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #9ba3c7;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ===== CHIPS ===== */
+.hist-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.hist-chip {
+  background: #21253a;
+  border: 1.5px solid rgba(91,110,245,0.15);
+  border-radius: 8px;
+  color: #9ba3c7;
+  padding: 6px 12px;
+  font-size: 0.83rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.hist-chip:hover { border-color: rgba(91,110,245,0.4); color: #f0f2ff; }
+.hist-chip.activo { background: rgba(91,110,245,0.15); border-color: #5b6ef5; color: #a0aaff; font-weight: 600; }
+.hist-chip-sm { padding: 4px 10px; font-size: 0.78rem; }
+
+/* ===== FECHAS ===== */
+.hist-fechas {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hist-fecha-input {
+  background: #21253a;
+  border: 1.5px solid rgba(91,110,245,0.2);
+  border-radius: 8px;
+  color: #f0f2ff;
+  padding: 7px 10px;
+  font-size: 0.83rem;
+  outline: none;
+  transition: border-color 0.2s;
+  flex: 1;
+  min-width: 130px;
+}
+.hist-fecha-input:focus { border-color: #5b6ef5; }
+
+.hist-fecha-sep {
+  color: #9ba3c7;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* ===== LIMPIAR ===== */
+.hist-limpiar {
+  background: none;
+  border: 1.5px solid rgba(248,113,113,0.25);
+  border-radius: 8px;
+  color: #f87171;
+  padding: 7px 14px;
+  font-size: 0.83rem;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.2s;
+}
+.hist-limpiar:hover { background: rgba(248,113,113,0.08); border-color: #f87171; }
+
+.hist-btn-eliminar:hover { opacity: 1; background: rgba(248,113,113,0.12); }
+
+/* Graficas*/
+.graf-doble {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.graf-doble-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem 1.5rem;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: border-color 0.2s;
+  /* Animación de expansión */
+  animation: grafExpand 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.graf-doble-item:hover {
+  border-color: var(--border-hover);
+}
+
+/* Cuando solo hay una gráfica, ocupa todo el ancho */
+.graf-doble.solo .graf-doble-item {
+  grid-column: 1 / -1;
+}
+
+@keyframes grafExpand {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ===== MOBILE RESPONSIVE (MAX-WIDTH: 768PX) ===== */
+@media (max-width: 768px) {
+  /* TOPBAR */
+  .hist-topbar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .hist-topbar h2 {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  .hist-filtrar-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* SEARCH */
+  .hist-search-wrap {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .hist-search {
+    font-size: 0.8rem;
+    padding: 8px 32px 8px 32px;
+  }
+
+  /* PANEL DE FILTROS */
+  .hist-panel {
+    padding: 1rem;
+    gap: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .hist-panel-label {
+    font-size: 0.7rem;
+  }
+
+  .hist-chips {
+    gap: 4px;
+  }
+
+  .hist-chip {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+
+  .hist-chip-sm {
+    padding: 3px 8px;
+    font-size: 0.7rem;
+  }
+
+  .hist-fechas {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .hist-fecha-input {
+    width: 100%;
+    padding: 6px 8px;
+    font-size: 0.75rem;
+  }
+
+  .hist-fecha-sep {
+    display: none;
+  }
+
+  .hist-limpiar {
+    width: 100%;
+  }
+
+  /* FILAS */
+  .hist-fila {
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  .hist-icono {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .hist-categoria {
+    font-size: 0.85rem;
+  }
+
+  .hist-descripcion {
+    font-size: 0.7rem;
+  }
+
+  .hist-monto {
+    font-size: 0.9rem;
+    min-width: 70px;
+    text-align: right;
+  }
+
+  .hist-btn-eliminar {
+    padding: 4px 6px;
+    font-size: 0.9rem;
+  }
+
+  /* GRUPOS */
+  .hist-grupo {
+    margin-bottom: 1rem;
+  }
+
+  .hist-grupo-header {
+    padding: 0 2px 6px;
+  }
+
+  .hist-grupo-fecha {
+    font-size: 0.7rem;
+  }
+
+  .hist-grupo-total {
+    font-size: 0.7rem;
+  }
+
+  /* GRÁFICAS DOBLE */
+  .graf-doble {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .graf-doble-item {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+}
